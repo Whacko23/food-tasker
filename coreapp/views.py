@@ -3,8 +3,10 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 from django.shortcuts import redirect
-from .models import Restaurant
-from .forms import RestaurantForm
+from django.contrib.auth.hashers import make_password
+from .models import Restaurant, User
+from .forms import RestaurantForm, UserForm
+from .mixins import AnonymousRequiredMixin
 
 class IndexView(TemplateView):
     template_name = 'index.html'
@@ -35,3 +37,16 @@ class SignupSuccessView(LoginRequiredMixin, TemplateView):
         
         del request.session['signed_up']
         return super().dispatch(request, *args, **kwargs)
+
+class UserCreateView(AnonymousRequiredMixin, CreateView):
+    model = User
+    form_class = UserForm
+    template_name = 'usersignup.html'
+    success_url = reverse_lazy('index')
+
+    def form_valid(self, form):
+        user = form.save(commit=False)
+        raw_password = form.cleaned_data['password']
+        user.set_password(make_password(raw_password))
+        user.save()
+        return super().form_valid(form)

@@ -1,150 +1,202 @@
-<!-- templates/restaurant/signup.html -->
-{% extends 'base.html' %} {% block title %}Restaurant Signup{% endblock %}
-{%block content %}
-<div class="container">
-  <h1 class="mt-5">Restaurant Signup</h1>
-  <form method="post" novalidate>
-    {% csrf_token %}
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="name"
-        name="name"
-        value="{{ form.name.value|default_if_none:'' }}"
-      />
-      {% if form.name.errors %}
-      <div class="alert alert-danger">{{ form.name.errors }}</div>
-      {% endif %}
-    </div>
-    <div class="form-group">
-      <label for="address">Address</label>
-      <input
-        type="text"
-        class="form-control"
-        id="address"
-        name="address"
-        value="{{ form.address.value|default_if_none:'' }}"
-      />
-      {% if form.address.errors %}
-      <div class="alert alert-danger">{{ form.address.errors }}</div>
-      {% endif %}
-    </div>
-    <div class="form-group">
-      <label for="city">City</label>
-      <input
-        type="text"
-        class="form-control"
-        id="city"
-        name="city"
-        value="{{ form.city.value|default_if_none:'' }}"
-      />
-      {% if form.city.errors %}
-      <div class="alert alert-danger">{{ form.city.errors }}</div>
-      {% endif %}
-    </div>
-    <div class="form-group">
-      <label for="state">State</label>
-      <input
-        type="text"
-        class="form-control"
-        id="state"
-        name="state"
-        value="{{ form.state.value|default_if_none:'' }}"
-      />
-      {% if form.state.errors %}
-      <div class="alert alert-danger">{{ form.state.errors }}</div>
-      {% endif %}
-    </div>
-    <div class="form-group">
-      <label for="zip_code">Zip Code</label>
-      <input
-        type="text"
-        class="form-control"
-        id="zip_code"
-        name="zip_code"
-        value="{{ form.zip_code.value|default_if_none:'' }}"
-      />
-      {% if form.zip_code.errors %}
-      <div class="alert alert-danger">{{ form.zip_code.errors }}</div>
-      {% endif %}
-    </div>
-    <div class="form-group">
-      <label for="phone_number">Phone Number</label>
-      <input
-        type="text"
-        class="form-control"
-        id="phone_number"
-        name="phone_number"
-        value="{{ form.phone_number.value|default_if_none:'' }}"
-      />
-      {% if form.phone_number.errors %}
-      <div class="alert alert-danger">{{ form.phone_number.errors }}</div>
-      {% endif %}
-    </div>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        class="form-control"
-        id="email"
-        name="email"
-        value="{{ form.email.value|default_if_none:'' }}"
-      />
-      {% if form.email.errors %}
-      <div class="alert alert-danger">{{ form.email.errors }}</div>
-      {% endif %}
-    </div>
-    <div class="form-group">
-      <label for="website">Website</label>
-      <input
-        type="url"
-        class="form-control"
-        id="website"
-        name="website"
-        value="{{ form.website.value|default_if_none:'' }}"
-      />
-      {% if form.website.errors %}
-      <div class="alert alert-danger">{{ form.website.errors }}</div>
-      {% endif %}
-    </div>
-    <div class="form-group">
-      <label for="cuisine_type">Cuisine Type</label>
-      <input
-        type="text"
-        class="form-control"
-        id="cuisine_type"
-        name="cuisine_type"
-        value="{{ form.cuisine_type.value|default_if_none:'' }}"
-      />
-      {% if form.cuisine_type.errors %}
-      <div class="alert alert-danger">{{ form.cuisine_type.errors }}</div>
-      {% endif %}
-    </div>
-    <div class="form-group">
-      <label for="opening_hours">Opening Hours</label>
-      <input
-        type="text"
-        class="form-control"
-        id="opening_hours"
-        name="opening_hours"
-        value="{{ form.opening_hours.value|default_if_none:'' }}"
-      />
-      {% if form.opening_hours.errors %}
-      <div class="alert alert-danger">{{ form.opening_hours.errors }}</div>
-      {% endif %}
-    </div>
-    <div class="form-group">
-      <label for="description">Description</label>
-      <textarea class="form-control" id="description" name="description">
+<!-- prettier-ignore -->
+{% extends 'base.html' %} {% block title %}Restaurant Signup{% endblock %} {% block content %}
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body">
+          <h1 class="text-center mb-4">Restaurant Signup</h1>
+          <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="name" class="form-label fw-bold">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  value="{{ form.name.value|default_if_none:'' }}"
+                  required
+                />
+                {% if form.name.errors %}
+                <div class="invalid-feedback">{{ form.name.errors }}</div>
+                {% endif %}
+              </div>
+              <div class="col-md-6">
+                <label for="phone_number" class="form-label fw-bold"
+                  >Phone Number</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phone_number"
+                  name="phone_number"
+                  value="{{ form.phone_number.value|default_if_none:'' }}"
+                  required
+                />
+                {% if form.phone_number.errors %}
+                <div class="invalid-feedback">
+                  {{ form.phone_number.errors }}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="address" class="form-label fw-bold">Address</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="address"
+                  name="address"
+                  value="{{ form.address.value|default_if_none:'' }}"
+                  required
+                />
+                {% if form.address.errors %}
+                <div class="invalid-feedback">{{ form.address.errors }}</div>
+                {% endif %}
+              </div>
+              <div class="col-md-3">
+                <label for="city" class="form-label fw-bold">City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  name="city"
+                  value="{{ form.city.value|default_if_none:'' }}"
+                  required
+                />
+                {% if form.city.errors %}
+                <div class="invalid-feedback">{{ form.city.errors }}</div>
+                {% endif %}
+              </div>
+              <div class="col-md-3">
+                <label for="state" class="form-label fw-bold">State</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="state"
+                  name="state"
+                  value="{{ form.state.value|default_if_none:'' }}"
+                  required
+                />
+                {% if form.state.errors %}
+                <div class="invalid-feedback">{{ form.state.errors }}</div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="zip_code" class="form-label fw-bold"
+                  >Zip Code</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="zip_code"
+                  name="zip_code"
+                  value="{{ form.zip_code.value|default_if_none:'' }}"
+                  required
+                />
+                {% if form.zip_code.errors %}
+                <div class="invalid-feedback">{{ form.zip_code.errors }}</div>
+                {% endif %}
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label fw-bold">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  value="{{ form.email.value|default_if_none:'' }}"
+                  required
+                />
+                {% if form.email.errors %}
+                <div class="invalid-feedback">{{ form.email.errors }}</div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="website" class="form-label fw-bold">Website</label>
+                <input
+                  type="url"
+                  class="form-control"
+                  id="website"
+                  name="website"
+                  value="{{ form.website.value|default_if_none:'' }}"
+                />
+                {% if form.website.errors %}
+                <div class="invalid-feedback">{{ form.website.errors }}</div>
+                {% endif %}
+              </div>
+              <div class="col-md-6">
+                <label for="cuisine_type" class="form-label fw-bold"
+                  >Cuisine Type</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cuisine_type"
+                  name="cuisine_type"
+                  value="{{ form.cuisine_type.value|default_if_none:'' }}"
+                  required
+                />
+                {% if form.cuisine_type.errors %}
+                <div class="invalid-feedback">
+                  {{ form.cuisine_type.errors }}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="opening_hours" class="form-label fw-bold"
+                  >Opening Hours</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="opening_hours"
+                  name="opening_hours"
+                  value="{{ form.opening_hours.value|default_if_none:'' }}"
+                  required
+                />
+                {% if form.opening_hours.errors %}
+                <div class="invalid-feedback">
+                  {{ form.opening_hours.errors }}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label fw-bold"
+                >Description</label
+              >
+              <textarea
+                class="form-control"
+                id="description"
+                name="description"
+                rows="3"
+                required
+              >
 {{ form.description.value|default_if_none:'' }}</textarea
-      >
-      {% if form.description.errors %}
-      <div class="alert alert-danger">{{ form.description.errors }}</div>
-      {% endif %}
+              >
+              {% if form.description.errors %}
+              <div class="invalid-feedback">{{ form.description.errors }}</div>
+              {% endif %}
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg">
+                Sign Up
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary">Sign Up</button>
-  </form>
+  </div>
 </div>
 {% endblock %}
