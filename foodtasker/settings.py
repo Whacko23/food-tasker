@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('DJANOG_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['food-tasker.onrender.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
