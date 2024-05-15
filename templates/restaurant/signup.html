@@ -171,6 +171,21 @@
                 {% endif %}
               </div>
             </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="logo" class="form-label fw-bold">Logo</label>
+                <input
+                  type="file"
+                  class="form-control"
+                  id="logo"
+                  name="logo"
+                  accept="image/*"
+                />
+                {% if form.logo.errors %}
+                <div class="invalid-feedback">{{ form.logo.errors }}</div>
+                {% endif %}
+              </div>
+            </div>
             <div class="mb-3">
               <label for="description" class="form-label fw-bold"
                 >Description</label

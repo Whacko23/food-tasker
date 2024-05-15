@@ -24,9 +24,20 @@ class RestaurantSignupView(LoginRequiredMixin, CreateView):
     login_url = 'login'
 
     def form_valid(self, form):
+        cleaned_data = form.cleaned_data
+        print(cleaned_data)
+
+        restaurant = form.save(commit=False)
+        restaurant.user = self.request.user
+        restaurant.save()
+
         response = super().form_valid(form)
         self.request.session['signed_up'] = True
         return response
+    
+    def form_invalid(self, form):
+      print(form.errors)
+      return super().form_invalid(form)
 
 class SignupSuccessView(LoginRequiredMixin, TemplateView):
     template_name = 'restaurant/signup_success.html'

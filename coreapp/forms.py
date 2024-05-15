@@ -1,13 +1,13 @@
 from django import forms
 from .models import Restaurant, UserProfile
 from django.contrib.auth.models import User
-
+from cloudinary.models import CloudinaryField
 class RestaurantForm(forms.ModelForm):
     class Meta:
         model = Restaurant
         fields = [
             'name', 'address', 'city', 'state', 'zip_code', 'phone_number',
-            'email', 'website', 'cuisine_type', 'opening_hours', 'description'
+            'email', 'website', 'cuisine_type', 'opening_hours', 'description','logo'
         ]
 
 
