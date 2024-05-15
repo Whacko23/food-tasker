@@ -1,0 +1,11 @@
+<!-- templates/restaurant/signup_success.html -->
+{% extends 'base.html' %} {% block title %}Signup Successful{% endblock %}
+{%block content %}
+<div class="container">
+  <h1 class="mt-5">Signup Successful</h1>
+  <div class="alert alert-success" role="alert">
+    Your restaurant has been successfully registered.
+  </div>
+  <a href="{% url 'signup' %}" class="btn btn-primary">Register Another</a>
+</div>
+{% endblock %}
