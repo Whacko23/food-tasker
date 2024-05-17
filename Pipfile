@@ -8,7 +8,7 @@ django = "*"
 cloudinary = "*"
 python-dotenv = "*"
 gunicorn = "*"
-django-allauth = "*"
+django-allauth = {extras = ["google", "socialaccount"], version = "*"}
 
 [dev-packages]
 

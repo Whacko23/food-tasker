@@ -61,5 +61,6 @@ class UserCreateView(AnonymousRequiredMixin, CreateView):
         raw_password = form.cleaned_data['password']
         user.set_password(raw_password)
         user.save()
+        
         login(self.request, user)
         return super().form_valid(form)

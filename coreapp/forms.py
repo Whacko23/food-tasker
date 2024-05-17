@@ -20,7 +20,6 @@ class UserForm(forms.ModelForm):
         fields = [
             'email', 'username', 'password', 'first_name', 'last_name'
         ]
-
     def save(self, commit=True):
         user = super().save(commit=False)
         if commit:

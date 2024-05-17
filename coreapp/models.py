@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=15)
-    
+
 class Restaurant(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='restaurant')
     name = models.CharField(max_length=200)
@@ -23,5 +23,19 @@ class Restaurant(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Customer(models.Model):
+    user=models.OneToOneField(UserProfile, on_delete=models.CASCADE,related_name='customer')
+    avatar=models.CharField(max_length=255)
 
+    def __str__(self):
+      return self.user.get_full_name()
+
+class Driver(models.Model):
+    user=models.OneToOneField(UserProfile, on_delete=models.CASCADE,related_name='driver')
+    avatar=models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.user.get_full_name()
+    
 
