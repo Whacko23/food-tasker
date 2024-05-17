@@ -8,6 +8,7 @@ django = "*"
 cloudinary = "*"
 python-dotenv = "*"
 gunicorn = "*"
+django-allauth = "*"
 
 [dev-packages]
 
